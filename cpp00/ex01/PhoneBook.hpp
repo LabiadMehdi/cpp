@@ -12,8 +12,9 @@ class PhoneBook
 	public:
 		PhoneBook();
 		void AddContact(Contact contact);
-		int DisplayContacts();
-		void DisplayContact(int index);
+		int	DisplayContacts();
+		int DisplayContact(int index);
+		int GetTracker();
 };
 
 #endif
