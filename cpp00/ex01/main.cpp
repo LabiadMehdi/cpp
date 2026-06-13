@@ -11,33 +11,31 @@ int main()
 	std::cout << "Please enter ADD, SEARCH or EXIT" << std::endl;
 	while (1)
 	{
-		std::cin >> command;
-		// std::cin.ignore();
+		std::getline(std::cin, command);
+		if (std::cin.eof())
+			break ;
 		if (command == "EXIT")
 			break ;
 		else if (command == "ADD")
 		{
-			Contact contact;
-			std::getline(std::cin, info);
-			contact.SetFirstName(info);
-			std::getline(std::cin, info);
-			contact.SetLastName(info);
-			std::getline(std::cin, info);
-			contact.SetNickName(info);
-			std::getline(std::cin, info);
-			contact.SetPhoneNumber(info);
-			std::getline(std::cin, info);
-			contact.SetDarkestSecret(info);
+			Contact contact = fill_contact();
 			pb.AddContact(contact);
 		}
 		else if (command == "SEARCH")
 		{
 			if (pb.DisplayContacts())
 			{
-				int index = check_for_index(pb.GetTracker());
-				if (index)
+				int index = check_for_index(pb.GetCount());
+				if (index == -1)
+					break ;
+				else if (index)
+				{
 					if (!(pb.DisplayContact(index)))
-						std::cout << "The contact you are trying to reach do not exist!" << std::endl;
+					{
+						std::cout << "The contact you are trying to reach do not exist!";
+						std::cout<< std::endl;
+					}
+				}
 
 			}
 		}
