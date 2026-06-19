@@ -8,7 +8,7 @@ $(NAME): $(SRCS)
 	c++ $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
-	rm -f main.o Harl.cpp
+	rm -f main.o Harl.o
 
 fclean: clean
 	rm -f $(NAME)
