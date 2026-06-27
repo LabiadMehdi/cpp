@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
@@ -19,4 +20,14 @@ int main(void)
 	steve.beRepaired(1);
 	std::cout << steve.getName() << " " << steve.getEnergyPoints() << " " << steve.getHitPoints() << " " << steve.getAttackDmg() << std::endl;
 	steve.guardGate();
+
+	std::cout << std::endl << std::endl;
+
+	FragTrap rose = FragTrap("rose");
+	std::cout << rose.getName() << " " << rose.getEnergyPoints() << " " << rose.getHitPoints() << " " << rose.getAttackDmg() << std::endl;
+	rose.attack("jhon");
+	rose.takeDamage(3);
+	rose.beRepaired(1);
+	std::cout << rose.getName() << " " << rose.getEnergyPoints() << " " << rose.getHitPoints() << " " << rose.getAttackDmg() << std::endl;
+	rose.highFivesGuys();
 }
