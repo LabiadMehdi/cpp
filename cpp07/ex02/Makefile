@@ -1,5 +1,5 @@
-NAME = iter
-SRCS = main.cpp
+NAME = arr
+SRCS = main.cpp Array.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
@@ -8,7 +8,7 @@ $(NAME): $(SRCS)
 	c++ $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
-	rm -f main.o
+	rm -f main.o Array.o
 
 fclean: clean
 	rm -f $(NAME)
