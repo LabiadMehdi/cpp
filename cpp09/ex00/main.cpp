@@ -20,19 +20,32 @@ bool isValidDate(const std::string &date)
 			return false;
 	}
 
+	std::stringstream ssyear;
 	std::stringstream ssmonth;
 	std::stringstream ssday;
 
+	ssyear << date.substr(0, 4);
 	ssmonth << date.substr(5, 2);
 	ssday << date.substr(8, 2);
 
+	int year;
 	int month;
 	int day;
 
+	ssyear >> year;
 	ssmonth >> month;
 	ssday >> day;
 	
-	if (month < 1 || month > 12 || day < 1 || day > 31)
+
+	if (month < 1 || month > 12)
+		return false;
+
+	int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+	if (isLeapYear && month == 1)
+        daysInMonth[1] = 29;
+	
+	if (day < 1 || day > daysInMonth[month - 1])
 		return false;
 	
 	return true;
